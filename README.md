@@ -137,7 +137,7 @@ else {
 | Argument Index | Argument Name | Default            | Example | Type   | Description         |
 |----------------|---------------|--------------------|---------|--------|---------------------|
 | 0              | action        |                    | home    | string | Name of your action |
-| 1              | score         | loaded from config | 7.0     | float  | It's optional       |
+| 1              | score         | loaded from config | 0.7     | float  | It's optional       |
 
 
 
