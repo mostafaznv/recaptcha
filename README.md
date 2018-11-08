@@ -176,7 +176,7 @@ else {
 </html>
 ```
 
-###### Controller:
+##### Controller:
 ```php
 class DevController extends Controller
 {
