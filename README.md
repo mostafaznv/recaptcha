@@ -70,12 +70,12 @@ return [
 2. ##### Create Recaptcha field
     this is a hidden input field that gets filled with a recaptcha token.
     ```php
-    {!! Recaptcha::field('action-name') !!}
+    {!! Recaptcha::field('login') !!}
     ```
 3. ##### Validate
     ```php
     $validate = Validator::make(Input::all(), [
-       'g-recaptcha-response' => 'required|recaptcha:action-name'
+       'g-recaptcha-response' => 'required|recaptcha:login'
     ]);
     ```
 4. ##### Done
