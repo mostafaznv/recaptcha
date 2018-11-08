@@ -47,7 +47,7 @@ RECAPTCHA_SITE_KEY=your-site-key
 RECAPTCHA_SECRET_KEY=your-secret-key
 ```
 
-> to set more, open config/recaptcha.php and set your own configurations.
+ to set more, open config/recaptcha.php and set your own configurations.
 ```php
 return [
     'secret_key' => env('RECAPTCHA_SECRET_KEY'),
@@ -82,13 +82,13 @@ return [
 
 ## Methods
 
-##### RenderJs
+#### RenderJs
 
 | Argument Index | Argument Name | Default | Example | Type   | Description |
 |----------------|---------------|---------|---------|--------|-------------|
 | 0              | language      | null    | fa      | string |             |
 
-##### Field
+#### Field
 | Argument Index | Argument Name | Default              | Example                                                         | Type   | Description                                                                                |
 |----------------|---------------|----------------------|-----------------------------------------------------------------|--------|--------------------------------------------------------------------------------------------|
 | 0              | action        |                      | home                                                            | string | Name of your action                                                                        |
@@ -96,7 +96,7 @@ return [
 | 2              | attributes    | []                   | ['id' => 'recaptcha-id', 'class' => 'form-element', 'required'] | array  | Array of attributes to render inside input field                                           |
 | 3              | callback      | null                 | recaptchaCallback                                               | string | Sometimes you want to use token with js. package will send token to your callback function |
 
-##### Validation
+#### Validation
 | Argument Index | Argument Name | Default            | Example | Type   | Description         |
 |----------------|---------------|--------------------|---------|--------|---------------------|
 | 0              | action        |                    | home    | string | Name of your action |
