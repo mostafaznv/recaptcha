@@ -1,0 +1,49 @@
+{
+    "name": "mostafaznv/recaptcha",
+    "description": "Laravel package for Google Recaptcha v3",
+    "keywords": [
+        "recaptcha",
+        "recaptcha v3",
+        "google recaptcha",
+        "no captcha",
+        "laravel",
+        "laravel 5",
+        "packalyst",
+        "mostafaznv"
+    ],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/mostafaznv/recaptcha/issues",
+        "source": "https://github.com/mostafaznv/recaptcha",
+        "docs": "https://github.com/mostafaznv/recaptcha/blob/master/README.md"
+    },
+    "authors": [
+        {
+            "name": "mostafaznv",
+            "email": "mostafa.zeinivand@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.6.4",
+        "laravel/framework": "5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.*",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Mostafaznv\\Recaptcha\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mostafaznv\\Recaptcha\\RecaptchaServiceProvider"
+            ],
+            "aliases": {
+                "Recaptcha": "Mostafaznv\\Recaptcha\\Facades\\Recaptcha"
+            }
+        }
+    }
+}
