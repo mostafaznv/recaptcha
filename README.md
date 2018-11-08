@@ -80,29 +80,6 @@ return [
     ```
 4. ##### Done
 
-## Methods
-
-#### RenderJs
-
-| Argument Index | Argument Name | Default | Example | Type   | Description |
-|----------------|---------------|---------|---------|--------|-------------|
-| 0              | language      | null    | fa      | string |             |
-
-#### Field
-| Argument Index | Argument Name | Default              | Example                                                         | Type   | Description                                                                                |
-|----------------|---------------|----------------------|-----------------------------------------------------------------|--------|--------------------------------------------------------------------------------------------|
-| 0              | action        |                      | home                                                            | string | Name of your action                                                                        |
-| 1              | name          | g-recaptcha-response | recaptcha_field                                                 | string | Value of name attribute for hidden file input                                              |
-| 2              | attributes    | []                   | ['id' => 'recaptcha-id', 'class' => 'form-element', 'required'] | array  | Array of attributes to render inside input field                                           |
-| 3              | callback      | null                 | recaptchaCallback                                               | string | Sometimes you want to use token with js. package will send token to your callback function |
-
-#### Validation
-| Argument Index | Argument Name | Default            | Example | Type   | Description         |
-|----------------|---------------|--------------------|---------|--------|---------------------|
-| 0              | action        |                    | home    | string | Name of your action |
-| 1              | score         | loaded from config | 7.0     | float  | It's optional       |
-
-
 ## Custom Validation Message
 Add the following values to the `custom` array in the `validation` language file:
 ```php
@@ -139,6 +116,29 @@ else {
     return abort(400, 'Bad request');
 }
 ```
+
+## Methods
+
+#### RenderJs
+
+| Argument Index | Argument Name | Default | Example | Type   | Description |
+|----------------|---------------|---------|---------|--------|-------------|
+| 0              | language      | null    | fa      | string |             |
+
+#### Field
+| Argument Index | Argument Name | Default              | Example                                                         | Type   | Description                                                                                |
+|----------------|---------------|----------------------|-----------------------------------------------------------------|--------|--------------------------------------------------------------------------------------------|
+| 0              | action        |                      | home                                                            | string | Name of your action                                                                        |
+| 1              | name          | g-recaptcha-response | recaptcha_field                                                 | string | Value of name attribute for hidden file input                                              |
+| 2              | attributes    | []                   | ['id' => 'recaptcha-id', 'class' => 'form-element', 'required'] | array  | Array of attributes to render inside input field                                           |
+| 3              | callback      | null                 | recaptchaCallback                                               | string | Sometimes you want to use token with js. package will send token to your callback function |
+
+#### Validation
+| Argument Index | Argument Name | Default            | Example | Type   | Description         |
+|----------------|---------------|--------------------|---------|--------|---------------------|
+| 0              | action        |                    | home    | string | Name of your action |
+| 1              | score         | loaded from config | 7.0     | float  | It's optional       |
+
 
 
 ## Complete Example
