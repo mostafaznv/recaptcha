@@ -53,6 +53,8 @@ return [
     'secret_key' => env('RECAPTCHA_SECRET_KEY'),
     'site_key'   => env('RECAPTCHA_SITE_KEY'),
 
+    'is_active' => true,
+
     'score' => 0.5,
 
     'options' => [
@@ -188,6 +190,13 @@ class DevController extends Controller
 }
 ```
 
+## Migration Guide
+##### from 1.0.0 to 1.1.0
+Just publish config and view again.
+
+```shell
+php artisan vendor:publish --provider="Mostafaznv\Recaptcha\RecaptchaServiceProvider"
+```
 
 
 ## Changelog

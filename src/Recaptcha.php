@@ -40,6 +40,13 @@ class Recaptcha
     protected $request;
 
     /**
+     * Check If Package Is Active.
+     *
+     * @var bool
+     */
+    protected $packageIsActive;
+
+    /**
      * Recaptcha constructor.
      *
      */
@@ -49,6 +56,8 @@ class Recaptcha
 
         $this->secretKey = $config['secret_key'];
         $this->siteKey = $config['site_key'];
+
+        $this->packageIsActive = $config['is_active'];
 
         $this->http = new Client($config['options']);
         $this->request = app('request');
@@ -77,32 +86,36 @@ class Recaptcha
      */
     public function verify($token, $action = null, $score = 0.5)
     {
-        try {
-            $response = $this->http->request('POST', static::VERIFY_URL, [
-                'form_params' => [
-                    'secret'   => $this->secretKey,
-                    'response' => $token,
-                    'remoteip' => $this->request->getClientIp(),
-                ],
-            ]);
+        if ($this->packageIsActive) {
+            try {
+                $response = $this->http->request('POST', static::VERIFY_URL, [
+                    'form_params' => [
+                        'secret'   => $this->secretKey,
+                        'response' => $token,
+                        'remoteip' => $this->request->getClientIp(),
+                    ],
+                ]);
 
-            $body = json_decode($response->getBody());
+                $body = json_decode($response->getBody());
 
-            if (!isset($body->success) or $body->success !== true) {
+                if (!isset($body->success) or $body->success !== true) {
+                    return false;
+                }
+
+                if ($action and (!isset($body->action) or $action != $body->action)) {
+                    return false;
+                }
+
+                return (isset($body->score) and $body->score >= $score) ? $body->score : false;
+            }
+            catch (GuzzleException $e) {
+                logger()->error($e->getMessage());
+
                 return false;
             }
-
-            if ($action and (!isset($body->action) or $action != $body->action)) {
-                return false;
-            }
-
-            return (isset($body->score) and $body->score >= $score) ? $body->score : false;
         }
-        catch (GuzzleException $e) {
-            logger()->error($e->getMessage());
 
-            return false;
-        }
+        return true;
     }
 
     /**
@@ -113,9 +126,13 @@ class Recaptcha
      */
     public function renderJs($lang = null)
     {
-        $link = $this->getJsLink($lang);
+        if ($this->packageIsActive) {
+            $link = $this->getJsLink($lang);
 
-        return "<script src='$link'></script>\n";
+            return "<script src='$link'></script>\n";
+        }
+
+        return "\n";
     }
 
     /**
@@ -136,9 +153,10 @@ class Recaptcha
         $id = $attributes['id'];
         $attributes = $this->buildAttributes($attributes);
         $siteKey = $this->siteKey;
+        $packageIsActive = $this->packageIsActive;
 
 
-        return view('recaptcha::field', compact('siteKey', 'action', 'name', 'id', 'attributes', 'callback'));
+        return view('recaptcha::field', compact('siteKey', 'action', 'name', 'id', 'attributes', 'callback', 'packageIsActive'));
     }
 
     /**
