@@ -192,11 +192,12 @@ class DevController extends Controller
 
 ## Migration Guide
 ##### from 1.0.0 to 1.1.0
-Just publish config and view again.
-
-```shell
-php artisan vendor:publish --provider="Mostafaznv\Recaptcha\RecaptchaServiceProvider"
-```
+- delete `app/recaptcha.php` file
+- delete `resources/views/vendor/recaptcha` directory
+- publish vendor again
+    ```shell
+    php artisan vendor:publish --provider="Mostafaznv\Recaptcha\RecaptchaServiceProvider"
+    ```
 
 
 ## Changelog
