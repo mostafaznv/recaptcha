@@ -29,7 +29,7 @@ Laravel package for [Google Recaptcha v3](https://developers.google.com/recaptch
     
     'aliases' => [
       ...
-      'Recaptcha' => Mostafaznv\Recaptcha\Recaptcha::class,
+      'Recaptcha' => Mostafaznv\Recaptcha\Facades\Recaptcha::class,
     ]
     ```
 
