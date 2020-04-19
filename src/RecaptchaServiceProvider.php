@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 class RecaptchaServiceProvider extends ServiceProvider
 {
-    const VERSION = '1.1.2';
+    const VERSION = '1.1.3';
 
     public function boot()
     {
